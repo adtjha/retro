@@ -19,6 +19,7 @@
     "react-native-screens": "~3.4.0",
     "react-native-unimodules": "~0.14.5",
     "react-native-web": "~0.13.12",
+    "tailwind-react-native-classnames": "^1.4.1",
     "tailwind-rn": "^3.0.1"
   },
   "devDependencies": {
