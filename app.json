@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "retro",
+    "slug": "retro",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "retro"
+}
