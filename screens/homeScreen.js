@@ -22,7 +22,7 @@ export const homeScreen = ({ navigation }) => {
         color="red"
         value="supporting job"
       />
-      <CustomButton name="add-outline" nav={navigation} />
+      <CustomButton name="receipt-outline" nav={() => console.log('popup')} />
     </SafeAreaView>
   );
 };

@@ -13,7 +13,7 @@ export const activityScreen = ({ navigation }) => {
       </Text>
       <CustomButton
         name="home-outline"
-        nav={navigation}
+        onPress={() => navigation.navigate('Home')}
       />
     </SafeAreaView>
   );
