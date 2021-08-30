@@ -3,11 +3,17 @@ import { View, Text, TouchableNativeFeedback } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { Ionicons } from "@expo/vector-icons";
 
-export const Card = (props) => {
+export const Card = ({nav, status, name}) => {
+  const {type, color} = status;
+
   return (
     <TouchableNativeFeedback
       onPress={() => {
-        props.nav.navigate("Activity");
+        nav.navigate("Activity", {
+          type,
+          color,
+          name,
+        });
       }}
     >
       <View
@@ -15,8 +21,8 @@ export const Card = (props) => {
           "mx-8",
           "my-4",
           "p-4",
-          "bg-" + props.color + "-200",
-          "border-" + props.color + "-900",
+          "bg-" + color + "-200",
+          "border-" + color + "-900",
           "rounded-lg",
           "flex",
           "flex-row",
@@ -26,27 +32,23 @@ export const Card = (props) => {
         )}
       >
         <Text
-          style={tw.style(
-            "text-lg",
-            "text-" + props.color + "-900",
-            "font-semibold"
-          )}
+          style={tw.style("text-lg", "text-" + color + "-900", "font-semibold")}
         >
-          {props.value}
+          {name}
         </Text>
         <Ionicons
           style={tw.style("pl-2", "ml-auto")}
           name={
-            props.status === "PENDING"
+            type === "PENDING"
               ? "stopwatch-outline"
-              : props.status === "DONE"
+              : type === "DONE"
               ? "close-circle-outline"
-              : props.status === "MISSED"
+              : type === "MISSED"
               ? "alert-circle-outline"
               : ""
           }
           size={24}
-          color={props.color}
+          color={color}
         />
       </View>
     </TouchableNativeFeedback>

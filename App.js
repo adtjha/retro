@@ -1,8 +1,8 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { homeScreen } from "./screens/homeScreen";
-import { activityScreen } from "./screens/activityScreen";
+import { Home } from "./screens/home";
+import { Activity } from "./screens/activity";
 
 const Stack = createStackNavigator();
 
@@ -13,8 +13,8 @@ const App = () => (
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Home" component={homeScreen} />
-      <Stack.Screen name="Activity" component={activityScreen} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Activity" component={Activity} />
     </Stack.Navigator>
   </NavigationContainer>
 );
