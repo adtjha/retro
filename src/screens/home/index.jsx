@@ -17,7 +17,6 @@ import { Ionicons } from "@expo/vector-icons";
 import colors from "../../Color";
 import { Picker } from "@react-native-picker/picker";
 import emojiRegex from "emoji-regex";
-import firestore from "@react-native-firebase/firestore";
 
 export const color = "coolGray";
 
@@ -29,18 +28,7 @@ export const Home = ({ navigation }) => {
   const availableColors = Object.keys(colors);
   const channel = useRef([]);
 
-  useEffect(() => {
-    firestore()
-      .collection("channel")
-      .get()
-      .then((channelSnapshot) => {
-        channelSnapshot.forEach((doc) => {
-          channel.current.push(doc.data);
-          console.log(JSON.stringify(doc));
-        });
-      })
-      .catch((err) => Alert.alert(err));
-  });
+  useEffect(() => {});
 
   return (
     <SafeAreaView style={styles(color).screen}>
