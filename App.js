@@ -1,23 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { ActivityTitle } from './src/components/ActivityTitle';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { HomeScreen } from "./src/HomeScreen";
+import { ProfileScreen } from "./src/ProfileScreen";
+import { LoginScreen } from "./src/Onboarding/LoginScreen";
+import { supabase } from "./src/supabase";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+function App() {
+  const [auth, setAuth] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setAuth(supabase.auth.session());
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      console.log(session);
+      setAuth(session);
+    });
+  });
+
   return (
-    <View style={styles.container}>
-      <ActivityTitle navigation="/" title="Retro" color="blue" />
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      {auth ? <HomeScreen /> : <LoginScreen />}
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
