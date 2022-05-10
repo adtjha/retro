@@ -23,7 +23,8 @@ function App() {
 
   return (
     <NavigationContainer>
-      {auth ? <HomeScreen /> : <LoginScreen />}
+      {/* {auth ? <HomeScreen /> : <LoginScreen />} */}
+      <HomeScreen />
     </NavigationContainer>
   );
 }
